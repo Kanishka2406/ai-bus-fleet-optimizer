@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI College Bus Fleet Optimizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>🚌 AI College Bus Fleet Optimizer</h1>
+        <p>Intelligent bus allocation, routing and capacity optimization</p>
+    </header>
+
+    <section class="card">
+        <h2>1. Add Buses</h2>
+        <div id="busContainer"></div>
+        <button class="secondary" onclick="addBus()">+ Add Bus</button>
+    </section>
+
+    <section class="card">
+        <h2>2. Add Pickup Stops</h2>
+        <p class="hint">X and Y are map coordinates used by the route optimizer.</p>
+        <div id="stopContainer"></div>
+        <button class="secondary" onclick="addStop()">+ Add Pickup Stop</button>
+    </section>
+
+    <section class="card">
+        <h2>3. Optimization Constraints</h2>
+        <div class="form-grid">
+            <div>
+                <label>Maximum Bus Occupancy</label>
+                <input type="number" id="maxOccupancy" value="50" min="1">
+            </div>
+            <div>
+                <label>Average Speed (km/h)</label>
+                <input type="number" id="averageSpeed" value="30" min="1">
+            </div>
+        </div>
+    </section>
+
+    <button class="optimize-btn" onclick="optimizeFleet()">🚀 OPTIMIZE FLEET</button>
+    <div id="loading" class="loading hidden">Optimizing bus fleet...</div>
+
+    <section id="results" class="hidden">
+        <h2>Optimization Results</h2>
+        <div id="summary" class="summary-grid"></div>
+        <div id="routes"></div>
+        <div id="unassigned"></div>
+    </section>
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
